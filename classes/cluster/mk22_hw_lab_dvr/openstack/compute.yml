@@ -1,0 +1,70 @@
+classes:
+- system.linux.system.repo.contrail
+- system.linux.system.repo.mos9
+- system.nova.compute.cluster
+- system.neutron.compute.cluster
+#- system.linux.network.interface.ovs_lab_dvr
+- cluster.mk22_lab_dvr
+parameters:
+  _param:
+    primary_interface: bond0
+    tenant_interface: bond0.1811
+    interface_mtu: 1500
+  nova:
+    compute:
+      vncproxy_url: http://${_param:cluster_vip_address}:6080
+      notification:
+        driver: messagingv2
+      message_queue:
+        members:
+          - host: ${_param:openstack_control_node01_address}
+          - host: ${_param:openstack_control_node02_address}
+          - host: ${_param:openstack_control_node03_address}
+  linux:
+    network:
+      bridge: openvswitch
+      interface:
+        eth0:
+          enabled: true
+          type: slave
+          master: bond0
+          mtu: ${_param:interface_mtu}
+          proto: manual
+        eth1:
+          enabled: true
+          type: slave
+          master: bond0
+          mtu: ${_param:interface_mtu}
+          proto: manual
+        bond0:
+          proto: manual
+          enabled: true
+          type: bond
+          mtu: ${_param:interface_mtu}
+          address: ${_param:single_address}
+          netmask: 255.255.254.0
+          use_in:
+          - interface: ${linux:interface:eth0}
+          - interface: ${linux:interface:eth0}
+          slaves: eth0 eth1
+          mode: active-backup
+        bond0.1811:
+          enabled: true
+          type: vlan
+          mtu: ${_param:interface_mtu}
+          pre_up_cmds:
+          - ifconfig bond0.1811
+          use_interfaces:
+          - bond0
+        br-int:
+          enabled: true
+          mtu: ${_param:interface_mtu}
+          type: ovs_bridge
+        br-mesh:
+          enabled: true
+          type: bridge
+          mtu: ${_param:interface_mtu}
+          address: ${_param:tenant_address}
+          netmask: 255.255.255.0
+          use_interfaces:
+          - bond0.1811
