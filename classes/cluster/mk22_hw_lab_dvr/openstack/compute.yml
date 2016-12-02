@@ -43,9 +43,9 @@ parameters:
           mtu: ${_param:interface_mtu}
           address: ${_param:single_address}
           netmask: 255.255.254.0
-          use_in:
-          - interface: ${linux:interface:eth0}
-          - interface: ${linux:interface:eth0}
+          use_interfaces:
+          - eth0
+          - eth1
           slaves: eth0 eth1
           mode: active-backup
         bond0.1811:
