@@ -9,12 +9,15 @@ parameters:
     # fuel service addresses
     fuel_config_address: 10.10.6.5
     # openstack service addresses
-   # openstack_proxy_address: 172.16.10.121
+   #openstack_proxy_address: 172.16.10.121
    # openstack_proxy_node01_address: 172.16.10.121
-   # openstack_control_address: 172.16.10.254
+    openstack_control_address: 10.0.175.245
     openstack_control_node01_address: 10.0.175.41
    #openstack_control_node01_address: 10.0.175.42
-    openstack_gateway_address: 10.0.174.1
+    openstack_control_node02_address: 10.50.0.12
+    openstack_control_node03_address: 10.50.0.13
+    openstack_gateway_node01_address: 10.0.174.1
+    openstack_gateway_node02_address: 10.0.174.1
   linux:
     network:
       host:

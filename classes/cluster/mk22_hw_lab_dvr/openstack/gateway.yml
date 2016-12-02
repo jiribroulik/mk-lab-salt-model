@@ -32,10 +32,14 @@ parameters:
           proto: manual
         bond0:
           enabled: true
-          bond-mode: 1
-          bond-miimon: 100
           proto: manual
-          bond-slaves: eth0 eth1
+          type: bond
+          use_interfaces:
+          - eth0
+          - eth1
+          slaves: eth0 eth1
+          mode: active-backup
+          mtu: 9000 
         br-floating:
           enabled: true
           mtu: ${_param:interface_mtu}
