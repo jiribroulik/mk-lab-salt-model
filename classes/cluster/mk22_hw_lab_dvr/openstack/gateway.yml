@@ -2,14 +2,58 @@ classes:
 - system.linux.system.repo.contrail
 - system.linux.system.repo.mos9
 - system.linux.system.repo.tcp_extra
-- system.linux.network.interface.ovs_lab_dvr
+#- system.linux.network.interface.ovs_lab_dvr
 - system.neutron.gateway.cluster
-- cluster.mk22_lab_dvr
+- cluster.mk22_hw_lab_dvr
 parameters:
   _param:
-    primary_interface: eth1
-    tenant_interface: eth2
-    external_interface: eth3
+#    primary_interface: eth0
+#    tenant_interface: eth1
+#    external_interface: eth3
+#    vlan1: 1811
+#    vlan2: 1812
+#    nativni_vlan: native
     interface_mtu: 9000
-    neutron_gateway_dvr: True
-    neutron_gateway_agent_mode: dvr_snat
+  linux:
+    network:
+      bridge: openvswitch
+      interface:
+        eth0:
+          enabled: true
+          type: eth
+          bond-master: bond0
+          mtu: ${_param:interface_mtu}
+          proto: manual
+        eth1:
+          enabled: true
+          type: eth
+          bond-master: bond0
+          mtu: ${_param:interface_mtu}
+          proto: manual
+        bond0:
+          enabled: true
+          bond-mode: 1
+          bond-miimon: 100
+          proto: manual
+          bond-slaves: eth0 eth1
+        br-floating:
+          enabled: true
+          mtu: ${_param:interface_mtu}
+          type: ovs_bridge
+          proto: manual
+        br-mgmt:
+          enabled: true
+          type: ovs_port
+          bridge: br-floating
+          proto: static
+          address: ${_param:single_address}
+          netmask: 255.255.254.0
+          gateway: 10.0.174.1
+        br-mesh:
+          enabled: true
+          type: ovs_port
+          ovs_options: tag=1811
+          proto: static
+          bridge: br-floating
+          address: ${_param:tenant_address}
+          netmask: 255.255.255.0

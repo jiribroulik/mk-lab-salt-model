@@ -14,7 +14,7 @@ classes:
 - system.mysql.client.single
 - system.reclass.storage.system.openstack_control_cluster
 - system.reclass.storage.system.openstack_compute_multi
-- system.reclass.storage.system.openstack_gateway_single
+- system.reclass.storage.system.openstack_gateway_cluster
 - cluster.mk22_hw_lab_dvr
 parameters:
   _param:
@@ -47,15 +47,19 @@ parameters:
             mysql_cluster_role: slave
         openstack_compute_node01:
           params:
-            single_address: 172.16.10.105
+            single_address: 10.0.175.53
             tenant_address: 10.1.0.105
             external_address: 100.16.0.105
         openstack_compute_node02: 
           params:
-            single_address: 172.16.10.106
+            single_address: 10.0.175.55
             tenant_address: 10.1.0.106
             external_address: 100.16.0.106
         openstack_gateway_node01:
           params:
-            tenant_address: 10.1.0.110
+            single_address: 10.0.175.50
+            external_address: 100.16.0.110
+        openstack_gateway_node02:
+          params:
+            single_address: 10.0.175.51
             external_address: 100.16.0.110

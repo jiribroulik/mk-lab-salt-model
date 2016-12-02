@@ -4,7 +4,7 @@ classes:
 - system.nova.compute.cluster
 - system.neutron.compute.cluster
 #- system.linux.network.interface.ovs_lab_dvr
-- cluster.mk22_lab_dvr
+- cluster.mk22_hw_lab_dvr
 parameters:
   _param:
     primary_interface: bond0
@@ -18,8 +18,8 @@ parameters:
       message_queue:
         members:
           - host: ${_param:openstack_control_node01_address}
-          - host: ${_param:openstack_control_node02_address}
-          - host: ${_param:openstack_control_node03_address}
+         # - host: ${_param:openstack_control_node02_address}
+         # - host: ${_param:openstack_control_node03_address}
   linux:
     network:
       bridge: openvswitch
@@ -49,6 +49,7 @@ parameters:
           slaves: eth0 eth1
           mode: active-backup
         bond0.1811:
+          proto: manual
           enabled: true
           type: vlan
           mtu: ${_param:interface_mtu}

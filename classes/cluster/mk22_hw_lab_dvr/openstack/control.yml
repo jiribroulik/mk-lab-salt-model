@@ -19,7 +19,7 @@ classes:
 - system.galera.server.database.heat
 - system.galera.server.database.keystone
 - system.galera.server.database.nova
-- cluster.mk22_lab_dvr
+- cluster.mk22_hw_lab_dvr
 parameters:
   _param:
     keepalived_vip_interface: eth1

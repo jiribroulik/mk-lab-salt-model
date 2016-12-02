@@ -4,28 +4,27 @@ classes:
 - cluster.mk22_hw_lab_dvr.openstack
 parameters:
   _param:
-    cluster_domain: mk22-lab-dvr.local
-    cluster_name: mk22_lab_dvr
+    cluster_domain: mk22-hw-lab-dvr.local
+    cluster_name: mk22_hw_lab_dvr
     # fuel service addresses
     fuel_config_address: 10.10.6.5
     # openstack service addresses
-    openstack_proxy_address: 172.16.10.121
-    openstack_proxy_node01_address: 172.16.10.121
-    openstack_control_address: 172.16.10.254
-    openstack_control_node01_address: 172.16.10.101
-    openstack_control_node02_address: 172.16.10.102
-    openstack_control_node03_address: 172.16.10.103
-    openstack_gateway_address: 172.16.10.110
+   # openstack_proxy_address: 172.16.10.121
+   # openstack_proxy_node01_address: 172.16.10.121
+   # openstack_control_address: 172.16.10.254
+    openstack_control_node01_address: 10.0.175.41
+   #openstack_control_node01_address: 10.0.175.42
+    openstack_gateway_address: 10.0.174.1
   linux:
     network:
       host:
         cmp01:
-          address: 172.16.10.105
+          address: 10.0.175.53
           names:
           - cmp01
           - cmp01.${_param:cluster_domain}
         cmp02:
-          address: 172.16.10.106
+          address: 10.0.175.55
           names:
           - cmp02
           - cmp02.${_param:cluster_domain}

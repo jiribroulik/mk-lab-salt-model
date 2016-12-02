@@ -1,7 +1,7 @@
 classes:
 - system.linux.system.repo.tcp_mk20
 - system.horizon.server.single
-- cluster.mk22_lab_dvr
+- cluster.mk22_hw_lab_dvr
 parameters:
   horizon:
     server:
