@@ -23,6 +23,8 @@ classes:
 parameters:
   _param:
     keepalived_vip_interface: eth1
+    cluster_vip_address: ${_param:openstack_control_address}
+    cluster_local_address: ${_param:single_address}
   linux:
     system:
       package:
