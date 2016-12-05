@@ -37,12 +37,13 @@ parameters:
           mtu: ${_param:interface_mtu}
           proto: manual
         bond0:
-          proto: manual
+          proto: static
           enabled: true
           type: bond
           mtu: ${_param:interface_mtu}
           address: ${_param:single_address}
           netmask: 255.255.254.0
+          gateway: ${_param:gateway}
           use_interfaces:
           - eth0
           - eth1
