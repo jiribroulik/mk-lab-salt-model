@@ -22,7 +22,7 @@ classes:
 - cluster.mk22_hw_lab_dvr
 parameters:
   _param:
-    keepalived_vip_interface: eth1
+    keepalived_vip_interface: eth0
     cluster_vip_address: ${_param:openstack_control_address}
     cluster_local_address: ${_param:single_address}
   linux:

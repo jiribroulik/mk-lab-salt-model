@@ -41,13 +41,12 @@ parameters:
           - service.galera.slave.cluster
           params:
             mysql_cluster_role: slave
-            single_address: 10.50.0.12
-        openstack_control_node03:
-          classes:
-          - service.galera.slave.cluster
-          params:
-            single_address: 10.50.0.10
-            mysql_cluster_role: slave
+            single_address: 10.0.175.62
+  #      openstack_control_node03:
+   #       classes:
+    #      - service.galera.slave.cluster
+     #     params:
+      #     mysql_cluster_role: slave
         openstack_compute_node01:
           params:
             single_address: 10.0.175.51

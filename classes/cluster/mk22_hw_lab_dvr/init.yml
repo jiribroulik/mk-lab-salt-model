@@ -14,8 +14,8 @@ parameters:
     openstack_control_address: 10.0.175.245
     openstack_control_node01_address: 10.0.175.53
    #openstack_control_node01_address: 10.0.175.42
-    openstack_control_node02_address: 10.50.0.12
-    openstack_control_node03_address: 10.50.0.13
+    openstack_control_node02_address: 10.0.175.62
+   # openstack_control_node03_address: 10.50.0.13
     openstack_gateway_node01_address: 10.0.175.41
     openstack_gateway_node02_address: 10.0.175.50
   linux:

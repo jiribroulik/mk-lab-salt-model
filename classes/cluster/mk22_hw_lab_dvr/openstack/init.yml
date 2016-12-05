@@ -28,9 +28,9 @@ parameters:
     cluster_node01_hostname: ctl01
     cluster_node01_address: 10.0.175.41
     cluster_node02_hostname: ctl02
-    cluster_node02_address: 172.16.10.102
-    cluster_node03_hostname: ctl03
-    cluster_node03_address: 172.16.10.103
+    cluster_node02_address: 10.0.175.62
+    #cluster_node03_hostname: ctl03
+    #cluster_node03_address: 172.16.10.103
     rabbitmq_secret_key: workshop
     rabbitmq_admin_password: workshop
     rabbitmq_openstack_password: workshop
@@ -101,11 +101,11 @@ parameters:
           names:
           - ctl02
           - ctl02.${_param:cluster_domain}
-        ctl03:
-          address: ${_param:openstack_control_node03_address}
-          names:
-          - ctl03
-          - ctl03.${_param:cluster_domain}
+    #    ctl03:
+     #     address: ${_param:openstack_control_node03_address}
+      #    names:
+       #   - ctl03
+        #  - ctl03.${_param:cluster_domain}
         gtw01:
           address: ${_param:openstack_gateway_node01_address}
           names:
