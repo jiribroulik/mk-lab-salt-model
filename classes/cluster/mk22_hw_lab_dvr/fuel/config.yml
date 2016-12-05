@@ -35,6 +35,7 @@ parameters:
           - service.galera.master.cluster
           params:
             mysql_cluster_role: master
+            single_address: 10.0.175.53
         openstack_control_node02:
           classes:
           - service.galera.slave.cluster
@@ -49,19 +50,19 @@ parameters:
             mysql_cluster_role: slave
         openstack_compute_node01:
           params:
-            single_address: 10.0.175.53
-            tenant_address: 10.1.0.105
+            single_address: 10.0.175.51
+            tenant_address: 172.17.100.51
             external_address: 100.16.0.105
         openstack_compute_node02: 
           params:
             single_address: 10.0.175.55
-            tenant_address: 10.1.0.106
+            tenant_address: 172.17.100.55
             external_address: 100.16.0.106
         openstack_gateway_node01:
           params:
             single_address: 10.0.175.41
             external_address: 100.16.0.110
-            tenant_address: 100.16.0.41
+            tenant_address: 172.17.100.41
         openstack_gateway_node02:
           params:
             single_address: 10.0.175.50

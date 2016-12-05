@@ -17,12 +17,12 @@ parameters:
     openstack_control_node02_address: 10.50.0.12
     openstack_control_node03_address: 10.50.0.13
     openstack_gateway_node01_address: 10.0.175.41
-    openstack_gateway_node02_address: 10.0.175.50
+    openstack_gateway_node02_address: 10.0.174.50
   linux:
     network:
       host:
         cmp01:
-          address: 10.0.175.51
+          address: 10.0.175.53
           names:
           - cmp01
           - cmp01.${_param:cluster_domain}
