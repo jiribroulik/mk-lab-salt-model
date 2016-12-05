@@ -29,8 +29,8 @@ parameters:
     cluster_node01_address: 10.0.175.41
     cluster_node02_hostname: ctl02
     cluster_node02_address: 10.0.175.62
-    #cluster_node03_hostname: ctl03
-    #cluster_node03_address: 172.16.10.103
+    cluster_node03_hostname: ctl03
+    cluster_node03_address: 172.16.10.103
     rabbitmq_secret_key: workshop
     rabbitmq_admin_password: workshop
     rabbitmq_openstack_password: workshop
