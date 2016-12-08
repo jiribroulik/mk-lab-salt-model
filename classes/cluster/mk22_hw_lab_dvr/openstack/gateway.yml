@@ -20,31 +20,33 @@ parameters:
       interface:
         eth0:
           enabled: true
-          type: eth
-          bond-master: bond0
+          type: slave
+          master: bond0
           mtu: ${_param:interface_mtu}
           proto: manual
         eth1:
           enabled: true
-          type: eth
-          bond-master: bond0
+          type: slave
+          master: bond0
           mtu: ${_param:interface_mtu}
           proto: manual
         bond0:
           enabled: true
           proto: manual
           type: bond
+          ovs_bridge: br-floating
           use_interfaces:
           - eth0
           - eth1
           slaves: eth0 eth1
-          mode: active-backup
+          mode: 1
           mtu: 9000 
         br-floating:
           enabled: true
           mtu: ${_param:interface_mtu}
           type: ovs_bridge
           proto: manual
+          ovs_ports: br-mesh br-mgmt bond0
         br-mgmt:
           enabled: true
           type: ovs_port
@@ -53,6 +55,7 @@ parameters:
           address: ${_param:single_address}
           netmask: 255.255.254.0
           gateway: 10.0.174.1
+          mtu: 9000
         br-mesh:
           enabled: true
           type: ovs_port
@@ -61,3 +64,4 @@ parameters:
           bridge: br-floating
           address: ${_param:tenant_address}
           netmask: 255.255.255.0
+          mtu: 9000

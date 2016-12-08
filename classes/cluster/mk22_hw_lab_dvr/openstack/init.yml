@@ -26,7 +26,7 @@ parameters:
     cluster_vip_address: 10.0.175.245
     cluster_local_address: ${_param:single_address}
     cluster_node01_hostname: ctl01
-    cluster_node01_address: 10.0.175.41
+    cluster_node01_address: 10.0.175.53
     cluster_node02_hostname: ctl02
     cluster_node02_address: 10.0.175.62
     cluster_node03_hostname: ctl03
