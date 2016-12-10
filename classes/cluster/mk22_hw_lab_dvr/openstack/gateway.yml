@@ -39,14 +39,14 @@ parameters:
           - eth0
           - eth1
           slaves: eth0 eth1
-          mode: 1
+          mode: active-backup
           mtu: 9000 
         br-floating:
           enabled: true
           mtu: ${_param:interface_mtu}
           type: ovs_bridge
           proto: manual
-          ovs_ports: br-mesh br-mgmt bond0
+          ovs_ports: br-mesh br-mgmt
         br-mgmt:
           enabled: true
           type: ovs_port
